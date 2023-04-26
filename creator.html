@@ -25,8 +25,22 @@
         <script src="js/sketchPad.js"></script>
 
         <script>
+            const data={
+                student:null,
+                session:new Date().getTime(),
+                drawings:{}
+            }
             const sketchPad=
                 new SketchPad(sketchPadContainer);
+            function start(){
+                if(student.value==""){
+                    alert("Please type your name first!");
+                    return;
+                }
+                data.student=student.value;
+                student.style.display="none";
+                sketchPadContainer.style.visibility="visible";
+            }
         </script>
     </body>
 </html>
