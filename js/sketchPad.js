@@ -43,12 +43,8 @@ class SketchPad{
                 this.#redraw();
             }
         }
-        this.canvas.onmouseup=()=>{
+        document.onmouseup=()=>{
             this.isDrawing=false;
-        }
-        this.undoBtn.onclick=()=>{
-            this.paths.pop();
-            this.#redraw();
         }
         this.canvas.ontouchstart=(evt)=>{
             const loc=evt.touches[0];
@@ -58,8 +54,12 @@ class SketchPad{
             const loc=evt.touches[0];
             this.canvas.onmousemove(loc);
         }
-        this.canvas.ontouchend=()=>{
+        document.ontouchend=()=>{
             this.canvas.onmouseup();
+        }
+        this.undoBtn.onclick=()=>{
+            this.paths.pop();
+            this.#redraw();
         }
     }
 
